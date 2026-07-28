@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InvestmentCompass.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+782c06a6061d1b019e29003139dba77545425378")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b4d7fe3462aa85a1f3416270884c24607281fa2")]
 [assembly: System.Reflection.AssemblyProductAttribute("InvestmentCompass.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InvestmentCompass.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

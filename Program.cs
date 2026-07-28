@@ -7,10 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 2. تفعيل سياسة CORS للسماح لـ React بالتواصل مع الـ API
+// 2. تفعيل سياسة CORS آمنة (Strict Policy)
 builder.Services.AddCors(options => {
-    options.AddPolicy("AllowReactApp", policy => {
-        policy.WithOrigins("http://localhost:5173")
+    options.AddPolicy("SecurePolicy", policy => {
+        policy.WithOrigins(
+                "https://investment-compass-72wr.vercel.app", // رابط Vercel الرسمي
+                "http://localhost:5173" // رابط التطوير المحلي
+              )
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -22,7 +25,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// تفعيل Swagger في بيئة التطوير
+// 3. إخفاء Swagger في بيئة الإنتاج (لمنع كشف الـ Endpoints للعامة)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -31,8 +34,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// تفعيل سياسة CORS
-app.UseCors("AllowReactApp");
+// 4. تفعيل سياسة CORS الآمنة
+app.UseCors("SecurePolicy");
 
 app.UseAuthorization();
 
