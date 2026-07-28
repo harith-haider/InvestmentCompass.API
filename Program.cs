@@ -8,10 +8,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // 2. تفعيل سياسة CORS آمنة (Strict Policy)
+// 2. تفعيل سياسة CORS آمنة
 builder.Services.AddCors(options => {
     options.AddPolicy("SecurePolicy", policy => {
         policy.WithOrigins(
-                "https://investment-compass-72wr.vercel.app", // رابط Vercel الرسمي
+                "https://investment-compass-lemon.vercel.app", // الرابط الجديد مال Vercel
                 "http://localhost:5173" // رابط التطوير المحلي
               )
               .AllowAnyHeader()
